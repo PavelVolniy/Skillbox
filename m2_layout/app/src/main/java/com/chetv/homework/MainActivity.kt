@@ -1,5 +1,6 @@
 package com.chetv.homework
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,6 +20,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        val customView = binding.customView
+
+        customView.setFirstMessage("Верхняя строчка")
+        customView.setSecondMessage("Нижняя строчка")
+        customView.setBackgroundColorFrame(Color.RED)
     }
 
 }

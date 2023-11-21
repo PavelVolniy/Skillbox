@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomView">
+        <attr name="id" format="reference" />
+        <attr name="first_row_text" format="string" />
+        <attr name="second_row_text" format="string" />
+        <attr name="frame_background_color" format="color" />
+    </declare-styleable>
+</resources>
