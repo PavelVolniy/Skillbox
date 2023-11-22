@@ -1,5 +1,6 @@
 com.chetv.homework
 attr alpha
+attr first_row_text
 attr font
 attr fontProviderAuthority
 attr fontProviderCerts
@@ -11,9 +12,12 @@ attr fontProviderSystemFontFamily
 attr fontStyle
 attr fontVariationSettings
 attr fontWeight
+attr frame_background_color
+attr id
 attr lStar
 attr nestedScrollViewStyle
 attr queryPatterns
+attr second_row_text
 attr shortcutMatchRequired
 attr ttcIndex
 color androidx_core_ripple_material_light
@@ -109,8 +113,11 @@ id blocking
 id chronometer
 id compose_view_saveable_id_tag
 id consume_window_insets_tag
+id customView
 id dialog_button
 id forever
+id frame
+id grayFrameLayout
 id hide_in_inspector_tag
 id icon
 id icon_group
@@ -145,6 +152,8 @@ id text
 id text2
 id time
 id title
+id tvFirstRow
+id tvSecondRow
 id view_tree_lifecycle_owner
 id view_tree_on_back_pressed_dispatcher_owner
 id view_tree_saved_state_registry_owner
@@ -152,6 +161,7 @@ id view_tree_view_model_store_owner
 id wrapped_composition_tag
 integer status_bar_notification_info_maxnum
 layout custom_dialog
+layout custom_view
 layout main_activity
 layout notification_action
 layout notification_action_tombstone
@@ -184,6 +194,7 @@ string status_bar_notification_info_overflow
 string switch_role
 string tab
 string template_percent
+style CustomViewText
 style DialogWindowTheme
 style FloatingDialogTheme
 style FloatingDialogWindowTheme
@@ -197,6 +208,7 @@ style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
 styleable Capability queryPatterns shortcutMatchRequired
 styleable ColorStateListItem android_color android_alpha android_lStar alpha lStar
+styleable CustomView first_row_text frame_background_color id second_row_text
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY

@@ -8,5 +8,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">HomeWork</string>
+    <style name="CustomViewText">
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
     <style name="Theme.HomeWork" parent="android:Theme.Material.Light.NoActionBar"/>
+    <declare-styleable name="CustomView">
+        <attr format="reference" name="id"/>
+        <attr format="string" name="first_row_text"/>
+        <attr format="string" name="second_row_text"/>
+        <attr format="color" name="frame_background_color"/>
+    </declare-styleable>
 </resources>

@@ -1,5 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+attr? first_row_text
+attr? frame_background_color
+attr? id
+attr? second_row_text
 color black
 color purple_200
 color purple_500
@@ -9,10 +13,18 @@ color teal_700
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+id customView
+id frame
+id grayFrameLayout
+id tvFirstRow
+id tvSecondRow
+layout custom_view
 layout main_activity
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+style CustomViewText
 style Theme.HomeWork
+styleable CustomView id first_row_text second_row_text frame_background_color
 xml backup_rules
 xml data_extraction_rules
