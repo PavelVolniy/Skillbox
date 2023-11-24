@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">homework</string>
+    <string name="name_hint_field">Имя</string>
+    <string name="hint_phone_text">Phone</string>
+    <string name="firstRadioButtonText">М</string>
+    <string name="secondRadioButtonText">Ж</string>
+    <string name="sexField">Пол</string>
+    <string name="notifications_field_text">Получать уведомления</string>
+    <string name="first_checkbox_field_text">Об авторизации на устройстве</string>
+    <string name="second_checkbox_field_text">О новинках и предложениях</string>
+    <string name="progress_field_text">Баллы</string>
+    <string name="save_button_text">Сохранить</string>
+    <string name="_50_100">50/100</string>
+</resources>

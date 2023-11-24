@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/defaultPadding"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/photo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilNameField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:boxCornerRadiusBottomEnd="@dimen/editTextCornerRadius"
+        app:boxCornerRadiusBottomStart="@dimen/editTextCornerRadius"
+        app:boxCornerRadiusTopEnd="@dimen/editTextCornerRadius"
+        app:boxCornerRadiusTopStart="@dimen/editTextCornerRadius"
+        app:counterEnabled="true"
+        app:counterMaxLength="40"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/image">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint_field"
+            android:inputType="textAutoComplete"
+            app:errorEnabled="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhoneField"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="phone"
+        android:hint="@string/hint_phone_text"
+        app:counterMaxLength="9"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@+id/tilNameField"
+        app:prefixText="+7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNumber"
+            style="@style/FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            app:errorEnabled="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sexField"
+        android:textAppearance="@style/headersStyle"
+        app:layout_constraintTop_toBottomOf="@+id/tilPhoneField" />
+
+    <RadioGroup
+        android:id="@+id/rgSex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sex">
+
+        <RadioButton
+            style="@style/radioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/firstRadioButtonText" />
+
+        <RadioButton
+            style="@style/radioButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/secondRadioButtonText" />
+    </RadioGroup>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/smNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/notifications_field_text"
+        app:layout_constraintTop_toBottomOf="@+id/rgSex"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/smNotification">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/firstCheckBox"
+            style="@style/CheckBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/first_checkbox_field_text" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/secondCheckBox"
+            style="@style/CheckBoxStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/second_checkbox_field_text" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:text="@string/progress_field_text"
+                android:textAppearance="@style/BallsTextStyle" />
+
+            <TextView
+                android:id="@+id/tvBallsNum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:text="@string/_50_100"
+                android:textAppearance="@style/BallsTextStyle" />
+        </FrameLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="50" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btSaveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/defaultPadding"
+            android:text="@string/save_button_text"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

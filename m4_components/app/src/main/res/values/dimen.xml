@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="defaultEditTextSize" type="dimen">16sp</item>
+    <item name="defaultTextSize" type="dimen">16sp</item>
+    <item name="buttonTextSize" type="dimen">16sp</item>
+    <item name="defaultPadding" type="dimen">16dp</item>
+    <item name="editTextCornerRadius" type="dimen">7dp</item>
+</resources>

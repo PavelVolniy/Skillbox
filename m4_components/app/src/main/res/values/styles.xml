@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CheckBoxStyle">
+        <item name="android:textColor">@drawable/selector_check_box</item>
+        <item name="buttonTint">@color/checkBoxButtonTintEnabled</item>
+        <item name="buttonIconTint">@color/white</item>
+        <item name="android:textSize">@dimen/defaultTextSize</item>
+    </style>
+    
+    <style name="radioButtonStyle">
+        <item name="buttonTint">@color/black</item>
+    </style>
+    
+    <style name="headersStyle">
+        <item name="android:textSize">@dimen/defaultTextSize</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textSize">@dimen/defaultEditTextSize</item>
+    </style>
+
+    <style name="ButtonTextAppearance" parent="TextAppearance.Material3.LabelMedium">\
+        <item name="android:textSize">@dimen/buttonTextSize</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FilledBox" >
+        <item name="android:background">@drawable/background_with_corner_radius</item>
+    </style>
+
+    <style name="BallsTextStyle">
+        <item name="android:textSize">@dimen/defaultTextSize</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+</resources>
