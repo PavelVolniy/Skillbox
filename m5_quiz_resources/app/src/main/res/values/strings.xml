@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">QuizApplication</string>
+    <string name="next_button_text">Продолжить</string>
+</resources>
