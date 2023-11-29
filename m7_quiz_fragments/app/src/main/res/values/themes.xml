@@ -15,4 +15,13 @@
 
         <item name="fontFamily">@font/opensans_medium</item>
     </style>
+
+    <style name="Theme.Skillbox_hw_quiz.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Skillbox_hw_quiz.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Skillbox_hw_quiz.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -30,7 +30,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding true
     }
 
@@ -46,8 +46,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
 
+    //fragments
     implementation 'androidx.fragment:fragment-ktx:1.6.2'
-
+    
+    //navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.5'
 

@@ -7,11 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.skillbox_hw_quiz.R
+import com.example.skillbox_hw_quiz.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
+    private var param1 = "param1"
+    private var _binding: MainFragmentBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         fun newInstance() = MainFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString("param1").toString()
+        }
     }
 
     private lateinit var viewModel: MainViewModel
@@ -20,7 +31,11 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        _binding = MainFragmentBinding.inflate(inflater)
+
+        binding.message.text = param1
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
