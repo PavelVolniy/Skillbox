@@ -20,7 +20,7 @@ class StartFragment : Fragment() {
         _binding = StartFragmentBinding.inflate(inflater)
 
         binding.nextButton.setOnClickListener {
-            findNavController().navigate(R.id.from_startPage_to_Quiz)
+            findNavController().navigate(R.id.fromStartPageToQuiz)
         }
 
         parentFragmentManager.popBackStack()
