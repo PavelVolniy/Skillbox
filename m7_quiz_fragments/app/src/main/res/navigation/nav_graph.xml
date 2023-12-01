@@ -25,17 +25,21 @@
         <action
             android:id="@+id/fromQuizToResult"
             app:destination="@id/resultPage" />
-        <action android:id="@+id/fromQuizToStartPage"
-            app:destination="@+id/startPage"/>
+        <action
+            android:id="@+id/fromQuizToStartPage"
+            app:destination="@+id/startPage"
+            />
     </fragment>
 
     <fragment
         android:id="@+id/resultPage"
-        android:name="com.example.skillbox_hw_quiz.ResultFragment"
+        android:name="com.example.skillbox_hw_quiz.FragmentResult"
         android:label="@string/results_page_label"
         tools:layout="@layout/fragment_result">
         <action
             android:id="@+id/from_resultPage_to_startPage"
-            app:destination="@id/startPage" />
+            app:destination="@id/startPage"
+            app:popUpTo="@id/startPage"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>

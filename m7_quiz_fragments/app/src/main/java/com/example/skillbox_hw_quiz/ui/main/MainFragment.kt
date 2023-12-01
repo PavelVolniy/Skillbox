@@ -13,19 +13,18 @@ import com.example.skillbox_hw_quiz.databinding.MainFragmentBinding
 import com.example.skillbox_hw_quiz.quiz.QuizStorage
 import com.google.android.material.snackbar.Snackbar
 
+private const val ANSWER_RESULT = "answerResult"
+
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private val listViews by lazy { mutableListOf<SurveyGroup>() }
     private val listIdCheckedButton by lazy { mutableListOf<Int>() }
+    private val quiz by lazy { QuizStorage.getQuiz(QuizStorage.Locale.Ru) }
 
 
     companion object {
         fun newInstance() = MainFragment()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
     }
 
     private lateinit var viewModel: MainViewModel
@@ -39,18 +38,21 @@ class MainFragment : Fragment() {
 
         binding.sendButton.setOnClickListener {
             if (checkAnswers()) {
-                val bundle = Bundle()
-                bundle.putIntArray("listId", listIdCheckedButton.toIntArray())
-                findNavController().navigate(R.id.fromQuizToResult)
+                val answerResult = QuizStorage.answer(quiz, listIdCheckedButton)
+                val bundle = Bundle().apply {
+                    putString(ANSWER_RESULT, answerResult)
+                }
+                findNavController().navigate(R.id.fromQuizToResult, bundle)
+
             } else {
-                Snackbar.make(binding.root, "Пожалуйста выберите ответы", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Пожалуйста выберите ответы", Snackbar.LENGTH_SHORT)
+                    .show()
             }
         }
 
         binding.backButton.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
-
 
         return binding.root
     }

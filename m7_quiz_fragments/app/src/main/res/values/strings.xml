@@ -19,4 +19,6 @@
     <string name="results_page_label">Results</string>
     <string name="back_button_text">back</string>
     <string name="send_button_text">send</string>
+    <string name="start_over_button">Начать заново</string>
+    <string name="answerResult">answerResult</string>
 </resources>

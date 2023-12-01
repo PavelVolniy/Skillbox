@@ -2,7 +2,6 @@ package com.example.skillbox_hw_quiz
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import com.example.skillbox_hw_quiz.databinding.SurveyGroupBinding
