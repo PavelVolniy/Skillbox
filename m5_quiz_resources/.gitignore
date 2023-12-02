@@ -8,3 +8,16 @@
 .externalNativeBuild
 .cxx
 local.properties
+ /app/src/main/ic_launcher-playstore.png
+ /app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt
+ /app/src/main/res/drawable/baseline_question_mark_24.xml
+ /app/src/main/res/drawable/ic_launcher_foreground.xml
+ /app/src/main/res/drawable/welcome_picture.xml
+ /app/src/main/res/font/opensans_bold.ttf
+ /app/src/main/res/font/opensans_light.ttf
+ /app/src/main/res/font/opensans_medium.ttf
+ /app/src/main/res/font/opensans_regular.ttf
+ /app/src/main/res/layout/activity_start.xml
+ /app/src/main/res/raw/right_answer.wav
+ /app/src/main/res/raw/wrong_answer.wav
+ /app/src/main/res/values/ic_launcher_background.xml
