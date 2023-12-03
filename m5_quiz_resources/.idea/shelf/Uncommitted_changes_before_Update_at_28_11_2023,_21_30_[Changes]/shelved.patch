@@ -1,0 +1,212 @@
+Index: app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.skillbox_hw_quiz\n\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\nimport com.example.skillbox_hw_quiz.ui.main.MainFragment\n\nclass MainActivity : AppCompatActivity() {\n\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.main_activity)\n        if (savedInstanceState == null) {\n            supportFragmentManager.beginTransaction()\n                .replace(R.id.container, MainFragment.newInstance())\n                .commitNow()\n        }\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt b/app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt
+--- a/app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt	(date 1701110808635)
+@@ -2,10 +2,10 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import com.example.skillbox_hw_quiz.databinding.MainActivityBinding
+ import com.example.skillbox_hw_quiz.ui.main.MainFragment
+ 
+ class MainActivity : AppCompatActivity() {
+-
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.main_activity)
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    package=\"com.example.skillbox_hw_quiz\">\n\n    <uses-permission android:name=\"android.permission.INTERNET\" />\n\n    <application\n        android:allowBackup=\"true\"\n        android:icon=\"@mipmap/ic_launcher\"\n        android:label=\"@string/app_name\"\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\n        android:supportsRtl=\"true\"\n        android:theme=\"@style/Theme.Skillbox_hw_quiz\">\n        <activity android:name=\".MainActivity\"></activity>\n        <activity\n            android:name=\".StartActivity\"\n            android:exported=\"true\">\n            <intent-filter>\n                <action android:name=\"android.intent.action.MAIN\" />\n\n                <category android:name=\"android.intent.category.LAUNCHER\" />\n            </intent-filter>\n\n        </activity>\n    </application>\n\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/src/main/AndroidManifest.xml	(date 1701111701382)
+@@ -11,7 +11,9 @@
+         android:roundIcon="@mipmap/ic_launcher_round"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.Skillbox_hw_quiz">
+-        <activity android:name=".MainActivity"></activity>
++        <activity
++            android:name=".MainActivity"
++            android:exported="true" />
+         <activity
+             android:name=".StartActivity"
+             android:exported="true">
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\nplugins {\n    id 'com.android.application' version '7.1.0-rc01' apply false\n    id 'com.android.library' version '7.1.0-rc01' apply false\n    id 'org.jetbrains.kotlin.android' version '1.8.10' apply false\n}\n\ntask clean(type: Delete) {\n    delete rootProject.buildDir\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/build.gradle	(date 1701193040272)
+@@ -1,7 +1,7 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ plugins {
+-    id 'com.android.application' version '7.1.0-rc01' apply false
+-    id 'com.android.library' version '7.1.0-rc01' apply false
++    id 'com.android.application' version '7.4.2' apply false
++    id 'com.android.library' version '7.4.2' apply false
+     id 'org.jetbrains.kotlin.android' version '1.8.10' apply false
+ }
+ 
+Index: app/src/main/res/navigation/nav_graph.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/navigation/nav_graph.xml b/app/src/main/res/navigation/nav_graph.xml
+new file mode 100644
+--- /dev/null	(date 1701194383429)
++++ b/app/src/main/res/navigation/nav_graph.xml	(date 1701194383429)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="utf-8"?>
++<navigation xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/nav_graph"
++    app:startDestination="@id/container">
++
++    <fragment
++        android:id="@+id/container"
++        android:name="com.example.skillbox_hw_quiz.ui.main.MainFragment"
++        android:label="@string/app_name"
++        tools:layout="@layout/main_fragment"
++        />
++</navigation>
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'com.android.application'\n    id 'org.jetbrains.kotlin.android'\n}\n\nandroid {\n    compileSdk 34\n\n    defaultConfig {\n        applicationId \"com.example.quis_application\"\n        minSdk 24\n        targetSdk 34\n        versionCode 1\n        versionName \"1.0\"\n\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\n    }\n\n    buildTypes {\n        release {\n            minifyEnabled false\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\n        }\n    }\n    compileOptions {\n        sourceCompatibility JavaVersion.VERSION_1_8\n        targetCompatibility JavaVersion.VERSION_1_8\n    }\n    kotlinOptions {\n        jvmTarget = '1.8'\n    }\n\n    buildFeatures{\n        viewBinding true\n    }\n}\n\ndependencies {\n\n    implementation 'androidx.core:core-ktx:1.12.0'\n    implementation 'androidx.appcompat:appcompat:1.6.1'\n    implementation 'com.google.android.material:material:1.10.0'\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\n    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'\n    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'\n    testImplementation 'junit:junit:4.13.2'\n    androidTestImplementation 'androidx.test.ext:junit:1.1.5'\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/build.gradle	(date 1701192825218)
+@@ -43,6 +43,14 @@
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
+     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
++
++    //fragment extensions
++    implementation('androidx.fragment:fragment-ktx:1.6.2')
++
++    //navigation
++    implementation('androidx.navigation:navigation-fragment-ktx:2.7.5')
++    implementation('androidx.navigation:navigation-ui-ktx:2.7.5')
++
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+Index: app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.skillbox_hw_quiz\n\nimport android.content.Intent\nimport androidx.appcompat.app.AppCompatActivity\nimport android.os.Bundle\n\nclass StartActivity : AppCompatActivity() {\n    override fun onCreate(savedInstanceState: Bundle?) {\n        super.onCreate(savedInstanceState)\n        setContentView(R.layout.activity_start)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt b/app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt
+--- a/app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/src/main/java/com/example/skillbox_hw_quiz/StartActivity.kt	(date 1701193370761)
+@@ -1,12 +1,22 @@
+ package com.example.skillbox_hw_quiz
+ 
+ import android.content.Intent
+-import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import android.widget.Toast
++import androidx.appcompat.app.AppCompatActivity
++import androidx.core.view.WindowCompat
++import androidx.navigation.findNavController
++import com.example.skillbox_hw_quiz.databinding.StartActivityBinding
+ 
+ class StartActivity : AppCompatActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+-        setContentView(R.layout.activity_start)
++        val binding = StartActivityBinding.inflate(layoutInflater)
++        setContentView(binding.root)
++
++        binding.nextButton.setOnClickListener {
++            startActivity(Intent(this, MainActivity::class.java))
++            Toast.makeText(this, "test message", Toast.LENGTH_SHORT).show()
++        }
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_start.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_start.xml b/app/src/main/res/layout/start_activity.xml
+rename from app/src/main/res/layout/activity_start.xml
+rename to app/src/main/res/layout/start_activity.xml
+--- a/app/src/main/res/layout/activity_start.xml	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/src/main/res/layout/start_activity.xml	(date 1701111149379)
+@@ -13,6 +13,7 @@
+         android:layout_height="match_parent"/>
+ 
+     <com.google.android.material.button.MaterialButton
++        android:id="@+id/nextButton"
+         android:text="@string/next_button_text"
+         app:cornerRadius="10dp"
+         android:layout_marginBottom="16dp"
+Index: app/src/main/res/layout/main_activity.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<FrameLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:id=\"@+id/container\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".MainActivity\" />
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/main_activity.xml b/app/src/main/res/layout/main_activity.xml
+--- a/app/src/main/res/layout/main_activity.xml	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/app/src/main/res/layout/main_activity.xml	(date 1701194066589)
+@@ -4,4 +4,14 @@
+     android:id="@+id/container"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".MainActivity" />
+\ No newline at end of file
++    tools:context=".MainActivity">
++
++    <androidx.fragment.app.FragmentContainerView xmlns:app="http://schemas.android.com/apk/res-auto"
++        android:name="com.example.skillbox_hw_quiz.ui.main.MainFragment"
++        android:id="@+id/nav_host"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        app:defaultNavHost="true"
++        app:navGraph="@navigation/nav_graph"/>
++
++</FrameLayout>
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Mon Nov 27 00:04:25 MSK 2023\ndistributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-7.3-bin.zip\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+--- a/gradle/wrapper/gradle-wrapper.properties	(revision 6c115b246f187c4dc953f28d9e3c5d2efd88cf79)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1701193040276)
+@@ -1,6 +1,6 @@
+ #Mon Nov 27 00:04:25 MSK 2023
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-7.3-bin.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-bin.zip
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
