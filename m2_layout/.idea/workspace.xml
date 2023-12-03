@@ -9,19 +9,53 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b34b444-c800-4133-9368-358a76866f00" name="Changes" comment="">
+    <list default="true" id="4b34b444-c800-4133-9368-358a76866f00" name="Changes" comment="commit">
       <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/androidTest/java/com/example/skillbox_hw_quiz/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/FragmentResult.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/StartFragment.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/SurveyGroup.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/quiz/Question.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/quiz/Quiz.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/ui/main/MainFragment.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/ui/main/MainViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/drawable-v21/welcome_picture.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/drawable/background_corner_radius_10dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/fragment_result.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/survey_group.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values-land/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values-w1240dp/dimens.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values-w600dp/dimens.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/attrs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/dimens.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/test/java/com/example/skillbox_hw_quiz/ExampleUnitTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m7_quiz_fragments/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/ui/main/MainFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/skillbox_hw_quiz/ui/main/MainFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/quizapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/java/com/example/quizapp/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/drawable/welcome_picture.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/drawable/welcome_picture.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/main_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/main_activity.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/main_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/main_fragment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/start_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/layout/start_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m7_quiz_fragments/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/../m7_quiz_fragments/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +81,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -133,5 +168,9 @@
       <updated>1701365637789</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>
