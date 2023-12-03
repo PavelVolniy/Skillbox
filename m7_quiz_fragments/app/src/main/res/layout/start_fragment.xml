@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartFragment">
+    tools:context=".MainActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
-        app:srcCompat="@drawable/welcome_picture"
-        android:background="#99ACB8"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="#99ACB8"
+        app:srcCompat="@drawable/welcome_picture" />
 
     <com.google.android.material.button.MaterialButton
-        android:text="@string/next_button_text"
-        app:cornerRadius="10dp"
-        android:layout_marginBottom="16dp"
-        android:layout_gravity="bottom|center"
+        android:id="@+id/nextButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="16dp"
+        android:text="@string/start_button_text"
+        app:cornerRadius="10dp" />
 </FrameLayout>
