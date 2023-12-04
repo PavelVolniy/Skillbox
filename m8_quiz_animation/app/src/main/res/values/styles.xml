@@ -19,4 +19,5 @@
         <item name="android:windowExitAnimation">@anim/enter_slide_left</item>
         <item name="android:windowEnterAnimation">@anim/exit_slide_left</item>
     </style>
+
 </resources>

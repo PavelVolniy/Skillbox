@@ -12,12 +12,14 @@
         android:background="#99ACB8"
         app:srcCompat="@drawable/welcome_picture" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
+        android:background="@drawable/custom_ripple"
+        android:textColor="@color/white"
+        android:focusable="true"
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="16dp"
         android:text="@string/start_button_text"
-        app:cornerRadius="10dp" />
+        />
 </FrameLayout>
