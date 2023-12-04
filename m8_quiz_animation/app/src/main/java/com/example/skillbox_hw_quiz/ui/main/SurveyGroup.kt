@@ -12,11 +12,12 @@ class SurveyGroup @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs) {
     private val binding: SurveyGroupBinding
-    private val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SurveyGroup, 0, 0)
+    private val listRadioButtons : MutableList<RadioButton>
 
     init {
         val view = inflate(context, R.layout.survey_group, this)
         binding = SurveyGroupBinding.bind(view)
+        listRadioButtons = mutableListOf()
     }
 
     fun setQuestion(question: String) {
@@ -26,12 +27,15 @@ class SurveyGroup @JvmOverloads constructor(
 
     fun addAnswer(answer: String, id: Int) {
         if (answer.isNotEmpty()) {
-            val checkBox = RadioButton(context)
-            checkBox.text = answer
-            checkBox.id = id
-            binding.answerGroup.addView(checkBox)
+            val radioButton = RadioButton(context)
+            radioButton.text = answer
+            radioButton.id = id
+            binding.answerGroup.addView(radioButton)
+            listRadioButtons.add(radioButton)
         }
     }
+
+    fun getListButtons() = listRadioButtons
 
     fun getAnswer(): Int {
         return binding.answerGroup.checkedRadioButtonId
