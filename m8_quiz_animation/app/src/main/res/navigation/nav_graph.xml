@@ -19,11 +19,12 @@
 
     <fragment
         android:id="@+id/quiz_page"
-        android:name="com.example.skillbox_hw_quiz.ui.main.MainFragment"
+        android:name="com.example.skillbox_hw_quiz.ui.main.QuizFragment"
         android:label="@string/quiz_page_label"
-        tools:layout="@layout/main_fragment">
+        tools:layout="@layout/quiz_fragment">
         <action
             android:id="@+id/fromQuizToResult"
+            app:popUpTo="@id/startPage"
             app:destination="@id/resultPage" />
         <action
             android:id="@+id/fromQuizToStartPage"
@@ -33,11 +34,11 @@
 
     <fragment
         android:id="@+id/resultPage"
-        android:name="com.example.skillbox_hw_quiz.FragmentResult"
+        android:name="com.example.skillbox_hw_quiz.ResultFragment"
         android:label="@string/results_page_label"
-        tools:layout="@layout/fragment_result">
+        tools:layout="@layout/result_fragment">
         <action
-            android:id="@+id/from_resultPage_to_startPage"
+            android:id="@+id/fromResultPageToStartPage"
             app:destination="@id/startPage"
             app:popUpTo="@id/startPage"
             app:popUpToInclusive="true"/>

@@ -6,14 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.skillbox_hw_quiz.databinding.FragmentResultBinding
+import com.example.skillbox_hw_quiz.databinding.ResultFragmentBinding
 
 private const val ANSWER_RESULT = "answerResult"
 
 
-class FragmentResult : Fragment() {
+class ResultFragment : Fragment() {
     private var answerResult: String? = null
-    private var _binding: FragmentResultBinding? = null
+    private var _binding: ResultFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,18 +27,20 @@ class FragmentResult : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentResultBinding.inflate(inflater)
+        _binding = ResultFragmentBinding.inflate(inflater)
 
         binding.startOverButton.setOnClickListener {
-            findNavController().navigate(R.id.from_resultPage_to_startPage)
+            findNavController().navigate(R.id.fromResultPageToStartPage)
         }
 
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (answerResult != null) binding.resultQuizText.text = answerResult
+
     }
 
     override fun onDestroy() {

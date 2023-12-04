@@ -7,7 +7,7 @@
     android:background="@color/colorSecondaryVariant"
     android:orientation="vertical"
     android:padding="@dimen/default_padding"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.main.QuizFragment">
 
 
     <ScrollView

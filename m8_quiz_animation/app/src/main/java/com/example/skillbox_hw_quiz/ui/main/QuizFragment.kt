@@ -9,14 +9,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.skillbox_hw_quiz.R
 import com.example.skillbox_hw_quiz.SurveyGroup
-import com.example.skillbox_hw_quiz.databinding.MainFragmentBinding
+import com.example.skillbox_hw_quiz.databinding.QuizFragmentBinding
 import com.example.skillbox_hw_quiz.quiz.QuizStorage
 import com.google.android.material.snackbar.Snackbar
 
 private const val ANSWER_RESULT = "answerResult"
 
-class MainFragment : Fragment() {
-    private var _binding: MainFragmentBinding? = null
+class QuizFragment : Fragment() {
+    private var _binding: QuizFragmentBinding? = null
     private val binding get() = _binding!!
     private val listViews by lazy { mutableListOf<SurveyGroup>() }
     private val listIdCheckedButton by lazy { mutableListOf<Int>() }
@@ -24,16 +24,16 @@ class MainFragment : Fragment() {
 
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = QuizFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: QuizViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = MainFragmentBinding.inflate(inflater)
+        _binding = QuizFragmentBinding.inflate(inflater)
         setData()
 
         binding.sendButton.setOnClickListener {
@@ -85,7 +85,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
