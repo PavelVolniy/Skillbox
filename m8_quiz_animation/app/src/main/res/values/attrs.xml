@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SurveyGroup">
+        <attr name="id" format="reference" />
+        <attr name="setQuestion" format="string" />
+        <attr name="setFirstTextAnswer" format="string" />
+        <attr name="setSecondTextAnswer" format="string" />
+        <attr name="setThirdTextAnswer" format="string" />
+        <attr name="setFoursTextAnswer" format="string" />
+        <attr name="frame_background_color" format="color" />
+    </declare-styleable>
+
+</resources>

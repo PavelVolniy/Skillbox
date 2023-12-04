@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startPage"
+    tools:showIn="@layout/main_activity">
+
+    <fragment
+        android:id="@+id/startPage"
+        android:name="com.example.skillbox_hw_quiz.StartFragment"
+        android:label="@string/welcome_page_label"
+        tools:layout="@layout/start_fragment">
+        <action
+            android:id="@+id/fromStartPageToQuiz"
+            app:destination="@id/quiz_page" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/quiz_page"
+        android:name="com.example.skillbox_hw_quiz.ui.main.MainFragment"
+        android:label="@string/quiz_page_label"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/fromQuizToResult"
+            app:destination="@id/resultPage" />
+        <action
+            android:id="@+id/fromQuizToStartPage"
+            app:destination="@+id/startPage"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultPage"
+        android:name="com.example.skillbox_hw_quiz.FragmentResult"
+        android:label="@string/results_page_label"
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/from_resultPage_to_startPage"
+            app:destination="@id/startPage"
+            app:popUpTo="@id/startPage"
+            app:popUpToInclusive="true"/>
+    </fragment>
+</navigation>
