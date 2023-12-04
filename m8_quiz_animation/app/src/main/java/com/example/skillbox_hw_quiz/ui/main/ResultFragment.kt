@@ -1,4 +1,4 @@
-package com.example.skillbox_hw_quiz
+package com.example.skillbox_hw_quiz.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.skillbox_hw_quiz.R
 import com.example.skillbox_hw_quiz.databinding.ResultFragmentBinding
 
 private const val ANSWER_RESULT = "answerResult"

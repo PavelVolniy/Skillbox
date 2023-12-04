@@ -8,10 +8,12 @@
 
     <fragment
         android:id="@+id/startPage"
-        android:name="com.example.skillbox_hw_quiz.StartFragment"
+        android:name="com.example.skillbox_hw_quiz.ui.main.StartFragment"
         android:label="@string/welcome_page_label"
         tools:layout="@layout/start_fragment">
         <action
+            app:enterAnim="@anim/enter_slide_left"
+            app:exitAnim="@anim/exit_slide_left"
             android:id="@+id/fromStartPageToQuiz"
             app:destination="@id/quiz_page" />
     </fragment>
@@ -25,6 +27,8 @@
         <action
             android:id="@+id/fromQuizToResult"
             app:popUpTo="@id/startPage"
+            app:enterAnim="@anim/enter_slide_left"
+            app:exitAnim="@anim/exit_slide_left"
             app:destination="@id/resultPage" />
         <action
             android:id="@+id/fromQuizToStartPage"
@@ -34,10 +38,12 @@
 
     <fragment
         android:id="@+id/resultPage"
-        android:name="com.example.skillbox_hw_quiz.ResultFragment"
+        android:name="com.example.skillbox_hw_quiz.ui.main.ResultFragment"
         android:label="@string/results_page_label"
         tools:layout="@layout/result_fragment">
         <action
+            app:enterAnim="@anim/enter_slide_right"
+            app:exitAnim="@anim/exit_slide_right"
             android:id="@+id/fromResultPageToStartPage"
             app:destination="@id/startPage"
             app:popUpTo="@id/startPage"

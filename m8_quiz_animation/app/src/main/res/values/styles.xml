@@ -10,4 +10,13 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/radio_button_padding</item>
     </style>
+
+    <style name="animStyle" >
+        <item name="android:windowAnimationStyle">@style/customAnimation</item>
+    </style>
+
+    <style name="customAnimation">
+        <item name="android:windowExitAnimation">@anim/enter_slide_left</item>
+        <item name="android:windowEnterAnimation">@anim/exit_slide_left</item>
+    </style>
 </resources>

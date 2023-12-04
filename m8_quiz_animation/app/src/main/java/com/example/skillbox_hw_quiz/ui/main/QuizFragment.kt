@@ -1,6 +1,7 @@
 package com.example.skillbox_hw_quiz.ui.main
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.skillbox_hw_quiz.R
-import com.example.skillbox_hw_quiz.SurveyGroup
 import com.example.skillbox_hw_quiz.databinding.QuizFragmentBinding
 import com.example.skillbox_hw_quiz.quiz.QuizStorage
 import com.google.android.material.snackbar.Snackbar
@@ -28,6 +28,12 @@ class QuizFragment : Fragment() {
     }
 
     private lateinit var viewModel: QuizViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = TransitionInflater.from(requireContext())
+            .inflateTransition(R.transition.my_transition)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,12 +87,6 @@ class QuizFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
