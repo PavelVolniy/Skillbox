@@ -19,11 +19,12 @@ class StartFragment : Fragment() {
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
             .inflateTransition(R.transition.my_transition)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = StartFragmentBinding.inflate(inflater)
         binding.nextButton.setOnClickListener {
             findNavController().navigate(R.id.fromStartPageToQuiz)

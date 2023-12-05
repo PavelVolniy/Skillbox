@@ -5,6 +5,8 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.skillbox_hw_quiz.R
@@ -22,8 +24,6 @@ class QuizFragment : Fragment() {
     private val quiz by lazy { QuizStorage.getQuiz(QuizStorage.Locale.Ru) }
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
@@ -36,17 +36,24 @@ class QuizFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = QuizFragmentBinding.inflate(inflater)
+        val buttonBack = binding.backButton
+        val buttonSendResult = binding.sendButton
+
+
+
         setData()
+        setAnimationSendButton(buttonSendResult)
+        setAnimationBackButton(buttonBack)
 
         listViews.forEach {
             it.getListButtons().forEach {
                 it.setOnClickListener {
-                    binding.sendButton.visibility = View.VISIBLE
+                    buttonSendResult.visibility = View.VISIBLE
                 }
             }
         }
 
-        binding.sendButton.setOnClickListener {
+        buttonSendResult.setOnClickListener {
             if (checkAnswers()) {
                 val answerResult = QuizStorage.answer(quiz, listIdCheckedButton)
                 val bundle = Bundle().apply {
@@ -60,12 +67,33 @@ class QuizFragment : Fragment() {
             }
         }
 
-        binding.backButton.setOnClickListener {
+        buttonBack.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
-
         return binding.root
+    }
+
+    private fun setAnimationSendButton(buttonSendResult: Button) {
+        buttonSendResult.translationX = -350f
+        buttonSendResult.animate().apply {
+            duration = 3500
+            translationX(3f)
+            rotation(3f)
+            interpolator = AccelerateDecelerateInterpolator()
+            start()
+        }
+    }
+
+    private fun setAnimationBackButton(buttonBack: Button) {
+        buttonBack.translationX = 350f
+        buttonBack.animate().apply {
+            duration = 1500
+            translationX(-3f)
+            rotation(-3f)
+            interpolator = AccelerateDecelerateInterpolator()
+            start()
+        }
     }
 
     private fun checkAnswers(): Boolean {
