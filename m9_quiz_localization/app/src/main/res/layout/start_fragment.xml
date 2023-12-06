@@ -12,14 +12,27 @@
         android:background="#99ACB8"
         app:srcCompat="@drawable/welcome_picture" />
 
-    <Button
-        android:background="@drawable/custom_ripple"
-        android:textColor="@color/white"
-        android:focusable="true"
-        android:id="@+id/nextButton"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:text="@string/start_button_text"
-        />
+        android:layout_gravity="bottom|center">
+
+        <Button
+            android:id="@+id/nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_ripple"
+            android:focusable="true"
+            android:layout_gravity="start|center"
+            android:text="@string/start_button_text"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/getDateButton"
+            android:text="@string/set_date_text_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:background="@drawable/custom_ripple" />
+    </FrameLayout>
 </FrameLayout>

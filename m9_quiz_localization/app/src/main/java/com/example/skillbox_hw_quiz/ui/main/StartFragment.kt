@@ -9,10 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.skillbox_hw_quiz.R
 import com.example.skillbox_hw_quiz.databinding.StartFragmentBinding
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class StartFragment : Fragment() {
     private var _binding: StartFragmentBinding? = null
     private val binding get() = _binding!!
+    private val calendar by lazy { Calendar.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +35,31 @@ class StartFragment : Fragment() {
             findNavController().navigate(R.id.fromStartPageToQuiz)
         }
 
+        binding.getDateButton.setOnClickListener {
+            val datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(resources.getString(R.string.title_date_picker))
+                .build()
+
+            datePicker.addOnPositiveButtonClickListener { timeInMillisSeconds ->
+                calendar.timeInMillis = timeInMillisSeconds
+
+                showSelectedDate(calendar)
+            }
+            datePicker.show(parentFragmentManager, "DatePicker")
+        }
+
         parentFragmentManager.popBackStack()
         return binding.root
+    }
+
+    private fun showSelectedDate(calendar: Calendar?) {
+        val date = SimpleDateFormat("dd:MM:yy").format(calendar?.time)
+        Snackbar.make(
+            binding.root,
+            "Выбранная дата $date",
+            Snackbar.LENGTH_SHORT
+            ).show()
+
     }
 
     override fun onDestroyView() {

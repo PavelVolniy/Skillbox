@@ -13,6 +13,7 @@ import com.example.skillbox_hw_quiz.R
 import com.example.skillbox_hw_quiz.databinding.QuizFragmentBinding
 import com.example.skillbox_hw_quiz.quiz.QuizStorage
 import com.google.android.material.snackbar.Snackbar
+import java.util.Locale
 
 private const val ANSWER_RESULT = "answerResult"
 
@@ -21,7 +22,11 @@ class QuizFragment : Fragment() {
     private val binding get() = _binding!!
     private val listViews by lazy { mutableListOf<SurveyGroup>() }
     private val listIdCheckedButton by lazy { mutableListOf<Int>() }
-    private val quiz by lazy { QuizStorage.getQuiz(QuizStorage.Locale.Ru) }
+    private val quiz by lazy {
+        if (resources.configuration.locales[0] == Locale.US) {
+            QuizStorage.getQuiz(QuizStorage.Locale.En)
+        } else QuizStorage.getQuiz(QuizStorage.Locale.Ru)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +110,6 @@ class QuizFragment : Fragment() {
     }
 
     private fun setData() {
-        val quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
         for (i in 0..quiz.questions.lastIndex) {
             val view = context?.let { SurveyGroup(it) }
             view?.setQuestion(quiz.questions[i].question)
