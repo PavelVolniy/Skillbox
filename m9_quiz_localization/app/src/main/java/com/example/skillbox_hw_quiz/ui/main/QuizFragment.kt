@@ -28,7 +28,6 @@ class QuizFragment : Fragment() {
         } else QuizStorage.getQuiz(QuizStorage.Locale.Ru)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(requireContext())
