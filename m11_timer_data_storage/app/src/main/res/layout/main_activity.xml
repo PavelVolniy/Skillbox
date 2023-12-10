@@ -7,19 +7,20 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:hint="@string/enter_hint_edit_text"
         android:id="@+id/editText"
-        android:inputType="text"
+        android:background="@null"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center" />
+        android:layout_height="60dp"
+        android:layout_gravity="top|center"
+        android:autofillHints="name"
+        android:hint="@string/enter_hint_edit_text"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Hello World!" />
+        android:layout_gravity="center" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -28,16 +29,16 @@
 
         <Button
             android:id="@+id/clearButton"
-            android:text="@string/clear_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="start" />
+            android:layout_gravity="start"
+            android:text="@string/clear_button_text" />
 
         <Button
             android:id="@+id/saveButton"
-            android:text="@string/save_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end" />
+            android:layout_gravity="end"
+            android:text="@string/save_button_text" />
     </FrameLayout>
 </FrameLayout>
