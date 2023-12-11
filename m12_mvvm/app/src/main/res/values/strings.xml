@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MvvM App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_result_text">The result of the query will be displayed here</string>
+    <string name="search_button_text">search</string>
+    <string name="hint_search_field">Enter your request</string>
+</resources>
