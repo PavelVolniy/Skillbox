@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/default_result_text" />
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"

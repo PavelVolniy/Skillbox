@@ -12,21 +12,25 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mvvmapp.databinding.MainFragmentBinding
 import kotlinx.coroutines.launch
 
+private const val KEY_REQUEST = "request"
+
 class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = MainFragmentBinding.inflate(layoutInflater)
+
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.progressBar.isVisible = viewModel.getProgressBurState()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,7 +59,7 @@ class MainFragment : Fragment() {
                         binding.progressBar.isVisible = false
                     }
 
-                    is State.Success -> {
+                    State.Success -> {
                         binding.inputLayout.error = null
                         binding.searchButton.isEnabled = true
                         binding.progressBar.isVisible = false
