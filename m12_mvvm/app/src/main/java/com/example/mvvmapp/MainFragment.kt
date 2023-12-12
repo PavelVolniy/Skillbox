@@ -36,21 +36,28 @@ class MainFragment : Fragment() {
             viewModel.checkSearchRequest(it.toString())
         }
 
+        binding.searchButton.setOnClickListener {
+            viewModel.getResultRequest()
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->
                 when (state) {
                     State.Loading -> {
-                        binding.searchButton.isChecked = false
+                        binding.searchButton.isEnabled = false
                         binding.progressBar.isVisible = true
+                        binding.inputLayout.error = null
                     }
 
                     State.Error -> {
-                        binding.searchButton.isChecked = false
+                        binding.inputLayout.error = "a few characters, min 3"
+                        binding.searchButton.isEnabled = false
                         binding.progressBar.isVisible = false
                     }
 
                     is State.Success -> {
-                        binding.searchButton.isChecked = true
+                        binding.inputLayout.error = null
+                        binding.searchButton.isEnabled = true
                         binding.progressBar.isVisible = false
                     }
 
@@ -58,6 +65,16 @@ class MainFragment : Fragment() {
 
             }
         }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.result.collect { result ->
+                binding.resultField.text = result
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

@@ -13,16 +13,28 @@ class MainViewModel(
 ) : ViewModel() {
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Error)
     val state = _state.asStateFlow()
-    private val _error = Channel<String>()
-    val error = _error.receiveAsFlow()
-    fun checkSearchRequest(it: String) {
+    private val _result = Channel<String>()
+    val result = _result.receiveAsFlow()
+    private var requestText: String = ""
+    fun checkSearchRequest(text: String) {
         viewModelScope.launch {
-            if (it.length < 3) {
+            if (text.length < 3) {
                 _state.value = State.Error
             } else {
+                requestText = text
+                _state.value = State.Success
+            }
+
+        }
+    }
+
+    fun getResultRequest() {
+        if (requestText.isNotEmpty()) {
+            viewModelScope.launch {
                 _state.value = State.Loading
-                val request = mainRepository.getData(it)
-                _state.value = State.Success(request)
+                val request = mainRepository.getData(requestText)
+                _state.value = State.Success
+                _result.send(request)
             }
         }
     }
