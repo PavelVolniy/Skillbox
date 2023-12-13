@@ -1,47 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/default_padding"
-    tools:context=".MainFragment">
+<layout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:hint="@string/hint_search_field">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/default_padding"
+        tools:context=".MainFragment">
 
-        <EditText
-            android:id="@+id/searchField"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
-            android:inputType="text"
-            android:maxLines="2" />
-    </com.google.android.material.textfield.TextInputLayout>
+            app:error="@{viewModel.errorMsg}"
+            android:layout_gravity="top"
+            android:hint="@string/hint_search_field">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/resultField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        />
+            <EditText
+                android:id="@+id/searchField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onTextChanged="@{(text, before, on, after) -> viewModel.checkSearchRequest(text.toString)}"
+                android:background="@color/gray"
+                android:inputType="text"
+                android:maxLines="2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/resultField"
+            android:text="@{viewModel.result}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/text_view_margin_top"
+            android:gravity="center" />
 
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:text="@string/search_button_text"
-        app:cornerRadius="@dimen/corner_radius_button" />
-</FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_padding">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="@{viewModel.state == State.Loading.INSTANCE ? View.VISIBLE : View.GONE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+            <Button
+                android:id="@+id/searchButton"
+                android:onClick="@{()->viewModel.getResultRequest()}"
+                android:enabled="@{viewModel.state != State.Loading.INSTANCE &amp;&amp; viewModel.state != State.Error.INSTANCE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/search_button_text"
+                app:cornerRadius="@dimen/corner_radius_button" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <data>
+
+        <import type="android.view.View" />
+        <import type="com.example.mvvmapp.State"/>
+
+        <variable
+            name="viewModel"
+            type="com.example.mvvmapp.MainViewModel" />
+    </data>
+</layout>

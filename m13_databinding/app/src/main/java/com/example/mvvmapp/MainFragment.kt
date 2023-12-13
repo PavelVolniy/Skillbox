@@ -5,14 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.mvvmapp.databinding.MainFragmentBinding
-import kotlinx.coroutines.launch
-
-private const val KEY_REQUEST = "request"
 
 class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels { MainViewModelFactory() }
@@ -36,44 +31,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.searchField.addTextChangedListener {
-            viewModel.checkSearchRequest(it.toString())
-        }
-
-        binding.searchButton.setOnClickListener {
-            viewModel.getResultRequest()
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.state.collect { state ->
-                when (state) {
-                    State.Loading -> {
-                        binding.searchButton.isEnabled = false
-                        binding.progressBar.isVisible = true
-                        binding.inputLayout.error = null
-                    }
-
-                    State.Error -> {
-                        binding.inputLayout.error = "a few characters, min 3"
-                        binding.searchButton.isEnabled = false
-                        binding.progressBar.isVisible = false
-                    }
-
-                    State.Success -> {
-                        binding.inputLayout.error = null
-                        binding.searchButton.isEnabled = true
-                        binding.progressBar.isVisible = false
-                    }
-
-                }
-
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.result.collect { result ->
-                binding.resultField.text = result
-            }
-        }
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
     }
 
     override fun onDestroy() {
