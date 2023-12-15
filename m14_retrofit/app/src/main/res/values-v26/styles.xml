@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="TextDescriptions">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:paddingVertical">@dimen/default_padding</item>
+        <item name="android:paddingHorizontal" tools:targetApi="o">
+            @dimen/horizontal_padding_textView
+        </item>
+    </style>
+
+
+</resources>

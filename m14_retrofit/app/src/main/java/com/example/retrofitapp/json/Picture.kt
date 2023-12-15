@@ -1,4 +1,4 @@
-package com.example.retrofitapp
+package com.example.retrofitapp.json
 
 data class Picture(
     val large: String,

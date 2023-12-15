@@ -1,4 +1,4 @@
-package com.example.retrofitapp
+package com.example.retrofitapp.json
 
 data class Login(
     val md5: String,

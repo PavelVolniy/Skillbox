@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="margin_name_field">20dp</dimen>
+    <dimen name="image_margin">20dp</dimen>
+    <dimen name="margin_top_linearlayout">20dp</dimen>
+    <dimen name="horizontal_padding_textView">5dp</dimen>
+</resources>

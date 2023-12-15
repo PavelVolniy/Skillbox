@@ -1,4 +1,4 @@
-package com.example.retrofitapp
+package com.example.retrofitapp.json
 
 data class Timezone(
     val description: String,
