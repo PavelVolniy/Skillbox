@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:padding="@dimen/default_padding"
         tools:context=".MainFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/nick_name"
@@ -20,18 +26,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/image_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_margin="@dimen/image_margin"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nick_name"
+            android:contentDescription="@null"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_top_linearlayout"
@@ -39,6 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_user">
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -72,7 +81,6 @@
                     android:maxLines="3"
                     android:text="@{viewModel.viewCard.age}"
                     tools:text="@tools:sample/lorem/random" />
-
             </LinearLayout>
 
             <LinearLayout
@@ -108,8 +116,17 @@
                     android:text="@{viewModel.viewCard.dateOfRegistration}"
                     tools:text="@tools:sample/lorem/random" />
             </LinearLayout>
-
         </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress_bur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.state == State.Success.INSTANCE ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/update_button"
@@ -119,9 +136,15 @@
             app:cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <data>
+
+        <import type="com.example.retrofitapp.State" />
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"

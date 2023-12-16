@@ -1,8 +1,8 @@
 package com.example.retrofitapp.json
 
 data class Info(
-    val page: Int,
-    val results: Int,
+    val page: String,
+    val results: String,
     val seed: String,
     val version: String
 )

@@ -1,6 +1,6 @@
 package com.example.retrofitapp
 
-class ViewCardUser(
+data class UserCardModel(
     val name: String,
     val secondName: String,
     val age: String,
