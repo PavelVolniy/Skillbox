@@ -5,13 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.roomapp.databinding.MainFragmentBinding
 
 class MainFragment : Fragment() {
-
+    private var _binding: MainFragmentBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<MainViewModel> { MainViewModelFactory() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        binding.vm = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+        _binding = MainFragmentBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
