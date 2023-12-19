@@ -11,14 +11,14 @@ import com.example.roomapp.databinding.MainFragmentBinding
 class MainFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-    private val viewModel by viewModels<MainViewModel> { MainViewModelFactory() }
+    private val viewModel by viewModels<MainViewModel> { MainViewModelFactory(this.requireContext().applicationContext) }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        _binding = MainFragmentBinding.inflate(layoutInflater)
         binding.vm = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        _binding = MainFragmentBinding.inflate(layoutInflater)
         return binding.root
     }
 

@@ -8,7 +8,7 @@ import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface DictionaryDao {
+interface WordsDao {
 
     @Query("SELECT * FROM words LIMIT 5")
     fun getAll(): Flow<List<Word>>

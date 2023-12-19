@@ -1,10 +1,17 @@
 package com.example.roomapp
 
-import com.example.roomapp.room.Word
+sealed class State {
+    object Created : State()
+    object Loading : State()
+    data class Success(val wordsList: String?) : State()
+    data class Error(val message: String?) : State()
 
-sealed class State{
-    object Created: State()
-    object Loading: State()
-    class Success(val wordsList: String): State()
-    class Error(val message: String): State()
+    fun toData(): String? {
+        when (this) {
+            is Success -> return this.wordsList
+            is Error -> return this.message
+            is Created -> return ""
+            is Loading -> return ""
+        }
+    }
 }

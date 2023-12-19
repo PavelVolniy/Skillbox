@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/edit_text_margin"
             android:hint="@string/enter_word_hint"
-            app:error="@{vm.state.Error.message.toString()}">
+            app:error="@{vm.state.toData().toString()}">
 
             <EditText
                 android:id="@+id/edit_text"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:hint="@string/default_text"
-            android:text="@{vm.state.Success.wordsList.toString()}" />
+            android:text="@{vm.state.toData().toString()}" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:onClick="@{()->vm.clearList()}"
                 android:text="@string/text_clear_button" />
 
             <ProgressBar
@@ -57,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
+                android:onClick="@{()->vm.addWord()}"
                 android:text="@string/text_add_button" />
 
         </FrameLayout>
