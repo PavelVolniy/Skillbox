@@ -10,5 +10,5 @@ data class Word(
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "count")
-    var count: Int?
+    var count: Int
 )

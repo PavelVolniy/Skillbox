@@ -2,7 +2,6 @@
 <layout>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,14 +14,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/edit_text_margin"
-            android:hint="@string/enter_word_hint"
-            app:error="@{vm.state.toData().toString()}">
+            android:hint="@string/enter_word_hint">
 
             <EditText
+                android:inputType="text"
                 android:id="@+id/edit_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onTextChanged="@{(text, before, on, after) -> vm.checkEnteredWord(text.toString)}" />
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -31,7 +29,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:hint="@string/default_text"
-            android:text="@{vm.state.toData().toString()}" />
+            android:paddingHorizontal="@dimen/default_padding" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -43,22 +41,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:onClick="@{()->vm.clearList()}"
                 android:text="@string/text_clear_button" />
 
             <ProgressBar
                 android:id="@+id/progress_bar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="@{vm.state == State.Loading.INSTANCE ? View.VISIBLE : View.GONE }" />
+                android:layout_gravity="center" />
 
             <Button
                 android:id="@+id/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:onClick="@{()->vm.addWord()}"
                 android:text="@string/text_add_button" />
 
         </FrameLayout>

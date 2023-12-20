@@ -1,17 +1,9 @@
 package com.example.roomapp
 
 sealed class State {
-    object Created : State()
     object Loading : State()
-    data class Success(val wordsList: String?) : State()
-    data class Error(val message: String?) : State()
+    data class Success(val listWords: String) : State()
+    class Error(val errorMessage: String) : State()
+    object Wait : State()
 
-    fun toData(): String? {
-        when (this) {
-            is Success -> return this.wordsList
-            is Error -> return this.message
-            is Created -> return ""
-            is Loading -> return ""
-        }
-    }
 }
