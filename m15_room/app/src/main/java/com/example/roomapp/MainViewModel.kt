@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 class MainViewModel(
     context: Context
 ) : ViewModel() {
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Success(""))
+    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Success)
     val state = _state.asStateFlow()
     private var currentWord: String = ""
     private val repository: WordRepo
@@ -33,7 +33,7 @@ class MainViewModel(
             currentWord = word
             if (!wordIsValid(currentWord)) {
                 _state.value = State.Error("Invalid symbol!")
-            }else _state.value = State.Wait
+            }else _state.value = State.Success
         } catch (e: Exception) {
             Log.e("errorFromDatabase", e.message.toString())
         }
@@ -60,7 +60,7 @@ class MainViewModel(
                 newWord.count = wordFromDataBase.count+1
                 repository.addWord(newWord)
             }
-            _state.value = State.Success(repository.getAllWords().toString())
+            _state.value = State.Success
         }
     }
 

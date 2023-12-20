@@ -46,11 +46,6 @@ class MainFragment : Fragment() {
                         binding.progressBar.isVisible = false
                         binding.addButton.isEnabled = true
                     }
-
-                    is State.Wait -> {
-                        binding.progressBar.isVisible = false
-                        binding.addButton.isEnabled = true
-                    }
                 }
             }
         }
