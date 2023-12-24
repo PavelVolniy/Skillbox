@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -60,4 +60,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.3.0")
     //retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    //dagger
+    implementation ("com.google.dagger:dagger:2.27")
+    kapt ("com.google.dagger:dagger-compiler:2.27")
 }

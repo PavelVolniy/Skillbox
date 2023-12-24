@@ -1,4 +1,4 @@
-package com.example.architectureapp.domain
+package com.example.architectureapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

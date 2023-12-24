@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:padding="@dimen/default_padding"
-    tools:context=".domain.MainFragment">
+    tools:context=".presentation.MainFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
