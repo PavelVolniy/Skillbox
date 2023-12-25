@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.architectureapp.databinding.MainFragmentBinding
 import com.example.architectureapp.di.DaggerAppComponent
+import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
@@ -30,7 +32,21 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.refreshButton.setOnClickListener {
-            Toast.makeText(context, "In develop", Toast.LENGTH_SHORT).show()
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.updateTask()
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.state.collect { state ->
+                when (state) {
+                    is State.Loading -> binding.progressBar.isVisible = true
+                    is State.Success-> {
+                        binding.progressBar.isVisible = false
+                        binding.taskText.text = state.result
+                    }
+                }
+            }
+
         }
     }
 
