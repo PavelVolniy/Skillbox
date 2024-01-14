@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/default_padding">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:background="@color/background_info_fields"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rover_text" />
+
+        <TextView
+            android:id="@+id/rover"
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text" />
+
+        <TextView
+            style="@style/myTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/sol_text" />
+
+        <TextView
+            android:id="@+id/sol"
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/def_4135" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:background="@color/background_info_fields"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding">
+
+        <TextView
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/camera" />
+
+        <TextView
+            android:id="@+id/camera"
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_text" />
+
+        <TextView
+            style="@style/myTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/data" />
+
+        <TextView
+            android:id="@+id/date"
+            style="@style/myTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/def_4135" />
+    </LinearLayout>
+
+</FrameLayout>

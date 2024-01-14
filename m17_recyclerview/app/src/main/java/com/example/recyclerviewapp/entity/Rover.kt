@@ -1,15 +1,13 @@
 package com.example.recyclerviewapp.entity
 
-import javax.inject.Inject
-
-data class Rover @Inject constructor(
+data class Rover(
     val cameras: List<CameraX>,
-    val id: Int,
+    val id: String,
     val landing_date: String,
     val launch_date: String,
     val max_date: String,
-    val max_sol: Int,
+    val max_sol: String,
     val name: String,
     val status: String,
-    val total_photos: Int
+    val total_photos: String
 )

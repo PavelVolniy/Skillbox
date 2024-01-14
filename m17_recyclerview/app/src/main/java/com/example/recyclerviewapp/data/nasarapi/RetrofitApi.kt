@@ -14,7 +14,7 @@ class RetrofitApi @Inject constructor() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    private val nasaApi = retrofit.create(NasaApi::class.java)
+    private val nasaApi: NasaApi = retrofit.create(NasaApi::class.java)
 
     fun getNasaApiInstance(): NasaApi = nasaApi
 }

@@ -1,12 +1,10 @@
 package com.example.recyclerviewapp.entity
 
-import javax.inject.Inject
-
-data class Photo @Inject constructor(
+data class Photo(
     val camera: Camera,
     val earth_date: String,
-    val id: Int,
+    val id: String,
     val img_src: String,
     val rover: Rover,
-    val sol: Int
+    val sol: String
 )
