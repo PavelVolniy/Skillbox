@@ -65,6 +65,10 @@ dependencies {
     //glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
+    //dagger
+    implementation("com.google.dagger:dagger:2.27")
+    kapt("com.google.dagger:dagger-compiler:2.27")
+
     //room
     implementation("androidx.room:room-runtime:$room_version")
     kapt ("androidx.room:room-compiler:$room_version")
