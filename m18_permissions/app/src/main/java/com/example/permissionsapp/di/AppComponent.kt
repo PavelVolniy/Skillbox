@@ -7,6 +7,6 @@ import javax.inject.Singleton
 @Singleton
 @Component
 interface AppComponent {
-    fun viewModelFactory(): ViewModelFactory
 
+    fun viewModelFactory(): ViewModelFactory
 }

@@ -1,5 +1,6 @@
 package com.example.permissionsapp.presentation.adapters
 
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -7,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.permissionsapp.databinding.ImageItemBinding
-import com.example.permissionsapp.entity.ImageItemDTO
+import com.example.permissionsapp.domain.entity.ImageItemDTO
 
 class DiffUtilImageAdapter : ListAdapter<ImageItemDTO, ImageHolder>(DiffUtilCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageHolder {
@@ -19,8 +20,9 @@ class DiffUtilImageAdapter : ListAdapter<ImageItemDTO, ImageHolder>(DiffUtilCall
         val item = getItem(position)
         with(holder.binding) {
             date.text = item.date
+            val path = "${MediaStore.Images.Media.EXTERNAL_CONTENT_URI}${ item.imagePath }"
             Glide.with(image.context)
-                .load(item.imagePath)
+                .load(path)
                 .into(image)
         }
     }

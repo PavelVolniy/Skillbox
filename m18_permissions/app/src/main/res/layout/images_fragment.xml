@@ -23,4 +23,10 @@
         android:layout_margin="@dimen/default_margin"
         android:background="@null"
         android:src="@drawable/photo_camera" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </FrameLayout>

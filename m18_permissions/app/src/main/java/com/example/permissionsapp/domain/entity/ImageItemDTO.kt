@@ -1,4 +1,4 @@
-package com.example.permissionsapp.entity
+package com.example.permissionsapp.domain.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
