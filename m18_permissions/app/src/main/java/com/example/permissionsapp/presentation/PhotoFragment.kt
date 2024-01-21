@@ -138,7 +138,7 @@ class PhotoFragment : Fragment() {
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, msg)
                     viewLifecycleOwner.lifecycleScope.launch {
-                        viewModel.addPhoto(outputFileResults.savedUri.toString())
+                        outputFileResults.savedUri?.path?.let { viewModel.addPhoto(it) }
                     }
                 }
             }

@@ -20,9 +20,8 @@ class DiffUtilImageAdapter : ListAdapter<ImageItemDTO, ImageHolder>(DiffUtilCall
         val item = getItem(position)
         with(holder.binding) {
             date.text = item.date
-            val path = "${MediaStore.Images.Media.EXTERNAL_CONTENT_URI}${ item.imagePath }"
             Glide.with(image.context)
-                .load(path)
+                .load(item.imagePath)
                 .into(image)
         }
     }

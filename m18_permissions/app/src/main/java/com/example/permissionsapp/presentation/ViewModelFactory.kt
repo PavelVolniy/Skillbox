@@ -6,7 +6,7 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import javax.inject.Inject
 
 class ViewModelFactory @Inject constructor(
-    private val viewModel: ImagesViewModel,
+    private val viewModel: ImagesViewModel
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         if (modelClass.isAssignableFrom(ImagesViewModel::class.java)) {

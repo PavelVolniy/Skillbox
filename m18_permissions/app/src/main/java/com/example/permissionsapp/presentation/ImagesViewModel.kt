@@ -1,5 +1,6 @@
 package com.example.permissionsapp.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.permissionsapp.data.room.DataBaseRepo
 import com.example.permissionsapp.domain.entity.ImageItemDTO
@@ -17,14 +18,17 @@ class ImagesViewModel @Inject constructor(
     val loading = MutableStateFlow(false)
 
     suspend fun updateData() {
+        val list = dataBaseRepo.getAllImages()
+        list?.forEach { Log.e("mlist", it.imagePath) }
         loading.value = true
-        _listImages.value = dataBaseRepo.getDb()?.getAll()
+        _listImages.value = list
         loading.value = false
     }
 
     suspend fun addPhoto(nameFile: String) {
         val date = SimpleDateFormat("yyyy-MM-dd", Locale.US)
             .format(System.currentTimeMillis())
-        dataBaseRepo.getDb()?.addPhotoItem(ImageItemDTO(0, nameFile, date))
+        Log.e("test", nameFile)
+        dataBaseRepo.addImages(ImageItemDTO(1, nameFile, date))
     }
 }

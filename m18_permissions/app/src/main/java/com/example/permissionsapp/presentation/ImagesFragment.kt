@@ -34,6 +34,7 @@ class ImagesFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.updateData()
         }
+
         viewModel.loading.onEach { binding.progressBar.isVisible = it }.launchIn(lifecycleScope)
         binding.recyclerView.adapter = adapter
         return binding.root
