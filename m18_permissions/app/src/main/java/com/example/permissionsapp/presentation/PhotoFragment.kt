@@ -1,8 +1,8 @@
 package com.example.permissionsapp.presentation
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -20,23 +20,23 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.permissionsapp.App
 import com.example.permissionsapp.databinding.PhotoFragmentBinding
-import com.example.permissionsapp.di.DaggerAppComponent
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.concurrent.ExecutorService
+import javax.inject.Inject
 
 
 class PhotoFragment : Fragment() {
     private var imageCapture: ImageCapture? = null
     private lateinit var executor: ExecutorService
     private var _binding: PhotoFragmentBinding? = null
-    private val viewModel by viewModels<ImagesViewModel> {
-        DaggerAppComponent.create().viewModelFactory()
-    }
+
+    @Inject
+    lateinit var viewModel: ImagesViewModel
     private val binding get() = _binding!!
     private val launcher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -48,6 +48,11 @@ class PhotoFragment : Fragment() {
                 Toast.makeText(context, "Permission request denied", Toast.LENGTH_SHORT).show()
             } else startCamera()
         }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as App).appComponent.inject(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -132,13 +137,12 @@ class PhotoFragment : Fragment() {
                     Log.e(TAG, exception.message.toString())
                 }
 
-                @SuppressLint("RestrictedApi")
                 override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                     val msg = "Photo capture succeeded  : ${outputFileResults.savedUri}"
                     Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, msg)
                     viewLifecycleOwner.lifecycleScope.launch {
-                        outputFileResults.savedUri?.path?.let { viewModel.addPhoto(it) }
+                        viewModel.addPhoto(outputFileResults.savedUri.toString())
                     }
                 }
             }
@@ -148,7 +152,6 @@ class PhotoFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        executor.shutdown()
     }
 
     companion object {

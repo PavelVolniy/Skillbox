@@ -1,6 +1,6 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
     id("kotlin-kapt")
 }
 
@@ -43,6 +43,7 @@ android {
 dependencies {
     val room_version = "2.6.1"
     val camerax_version = "1.2.2"
+    val dagger_version = "2.48.1"
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -76,8 +77,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     //dagger
-    implementation("com.google.dagger:dagger:2.27")
-    kapt("com.google.dagger:dagger-compiler:2.27")
+    implementation("com.google.dagger:dagger:$dagger_version")
+    kapt("com.google.dagger:dagger-compiler:$dagger_version")
 
     //room
     implementation("androidx.room:room-runtime:$room_version")

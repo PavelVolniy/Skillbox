@@ -1,22 +1,17 @@
 package com.example.permissionsapp.data.room
 
-import android.content.Context
-import com.example.permissionsapp.App
 import com.example.permissionsapp.domain.entity.ImageItemDTO
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
-@Singleton
-class DataBaseRepo @Inject constructor(
-     private val context: Context
-) {
-    private var imagesDao: ImagesDao? = null
+class DataBaseRepo @Inject constructor(private val imagesDao: ImagesDao) {
 
-    init {
-        imagesDao = (context.applicationContext as App).database.imageDAO()
+    fun getAll(): Flow<List<ImageItemDTO>> {
+        return imagesDao.getAll()
     }
-    suspend fun getAllImages() = imagesDao?.getAll()
 
-    suspend fun addImages(imageItemDTO: ImageItemDTO) = imagesDao?.addPhotoItem(imageItemDTO)
+    suspend fun addPhotoItem(item: ImageItemDTO) {
+        imagesDao.addPhotoItem(item)
+    }
 }

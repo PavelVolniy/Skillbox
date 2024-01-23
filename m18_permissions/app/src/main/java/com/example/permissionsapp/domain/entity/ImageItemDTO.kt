@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class ImageItemDTO(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Long,
+    val id: Long? = null,
     @ColumnInfo(name = "image_path")
     val imagePath: String,
     @ColumnInfo(name = "date")
