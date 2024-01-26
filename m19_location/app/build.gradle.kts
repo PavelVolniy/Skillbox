@@ -42,7 +42,6 @@ android {
 }
 
 dependencies {
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
     val dagger_version = "2.48.1"
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -65,4 +64,10 @@ dependencies {
     //dagger
     implementation("com.google.dagger:dagger:$dagger_version")
     kapt("com.google.dagger:dagger-compiler:$dagger_version")
+
+    //location
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+
+    //map
+    implementation("org.osmdroid:osmdroid-android:6.1.18")
 }
