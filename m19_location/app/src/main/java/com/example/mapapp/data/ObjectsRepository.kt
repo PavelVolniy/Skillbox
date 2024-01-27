@@ -1,7 +1,10 @@
 package com.example.mapapp.data
 
-class ObjectsRepository {
-    private val listObjects = listOf<InterestingObjects>(
+import kotlinx.coroutines.flow.asFlow
+import javax.inject.Inject
+
+class ObjectsRepository @Inject constructor(){
+    private val listObjects = listOf(
         InterestingObjects(
             title = "Fish point",
             descriptions = "They catch a lot of different fish here",
@@ -34,5 +37,5 @@ class ObjectsRepository {
         )
     )
 
-    fun getObjects() = listObjects
+    fun getObjects() = listObjects.asFlow()
 }

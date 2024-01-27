@@ -1,6 +1,7 @@
 package com.example.mapapp.presentation
 
 import android.Manifest
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.mapapp.App
 import com.example.mapapp.databinding.MapsFragmentBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -21,6 +24,11 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import org.osmdroid.api.IMapController
 import org.osmdroid.config.Configuration
 import org.osmdroid.library.BuildConfig
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -32,10 +40,12 @@ import org.osmdroid.views.overlay.OverlayItem
 import org.osmdroid.views.overlay.ScaleBarOverlay
 import org.osmdroid.views.overlay.compass.CompassOverlay
 import org.osmdroid.views.overlay.compass.InternalCompassOrientationProvider
-import org.osmdroid.views.overlay.gestures.RotationGestureOverlay
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
+import javax.inject.Inject
 
 class MapsFragment : Fragment() {
+    @Inject
+    lateinit var viewModel: MapViewModel
     private lateinit var map: MapView
     private lateinit var fusedLocation: FusedLocationProviderClient
     private var _viewBinding: MapsFragmentBinding? = null
@@ -44,7 +54,7 @@ class MapsFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             var permissionGranted = true
             permissions.entries.forEach {
-                if (it.key in REQUIRED_PERMISSIONS && it.value == false) permissionGranted = false
+                if (it.key in REQUIRED_PERMISSIONS && !it.value) permissionGranted = false
                 if (!permissionGranted) {
                     Toast.makeText(
                         context,
@@ -68,33 +78,17 @@ class MapsFragment : Fragment() {
                         1000
                     )
                     val myLocation = MyLocationNewOverlay(map)
-                    myLocation.enableMyLocation()
+                    myLocation.disableFollowLocation()
                     map.overlays.add(myLocation)
                 }
             }
         }
     }
 
-    private fun startLocation() {
-        val request = LocationRequest.create()
-            .setInterval(1_000)
-            .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
 
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            return
-        }
-        fusedLocation.requestLocationUpdates(
-            request,
-            locationCallBack,
-            Looper.getMainLooper()
-        )
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as App).appComponent.inject(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -122,25 +116,66 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _viewBinding = MapsFragmentBinding.inflate(layoutInflater)
-        map = binding.map
-        map.setTileSource(TileSourceFactory.MAPNIK)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        map = binding.map
+        map.setTileSource(TileSourceFactory.MAPNIK)
         val mapController = map.controller
         mapController.setZoom(15.5)
-        mapController.setCenter(GeoPoint(47.226028, 39.924118))
         val array = ArrayList<OverlayItem>()
-        array.add(
-            OverlayItem(
-                "Закопана рыба",
-                "Но это прям совсем не точно!",
-                GeoPoint(47.226028, 39.924190)
+        viewModel.listObjets.onEach { objectItem ->
+            array.add(
+                OverlayItem(
+                    objectItem.title,
+                    objectItem.descriptions,
+                    GeoPoint(objectItem.latitude, objectItem.longitude)
+                )
             )
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+        mapController.setCenter(GeoPoint(47.204663, 39.765014))
+        setSettingsMap(array)
+        if (viewModel.isCreated) {
+            showPoints(array, mapController)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        fusedLocation.removeLocationUpdates(locationCallBack)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _viewBinding = null
+    }
+
+    private fun startLocation() {
+        val request = LocationRequest.create()
+            .setInterval(1_000)
+            .setPriority(Priority.PRIORITY_HIGH_ACCURACY)
+
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+        fusedLocation.requestLocationUpdates(
+            request,
+            locationCallBack,
+            Looper.getMainLooper()
         )
-        var overlay = ItemizedOverlayWithFocus(
+    }
+
+    private fun setSettingsMap(array: ArrayList<OverlayItem>) {
+        val overlay = ItemizedOverlayWithFocus(
             array,
             object : ItemizedIconOverlay.OnItemGestureListener<OverlayItem> {
                 override fun onItemSingleTapUp(index: Int, item: OverlayItem?): Boolean {
@@ -168,17 +203,19 @@ class MapsFragment : Fragment() {
         val mScaleBarOverlay = ScaleBarOverlay(map)
         mScaleBarOverlay.setScaleBarOffset(dm.widthPixels / 2, 10)
         map.overlays.add(scaleBarOverlay)
-        val rotationGestureOverlay = RotationGestureOverlay(map)
-        rotationGestureOverlay.isEnabled
-        map.setMultiTouchControls(true)
-        map.overlays.add(rotationGestureOverlay)
-
-
     }
 
-    override fun onStop() {
-        super.onStop()
-        fusedLocation.removeLocationUpdates(locationCallBack)
+    private fun showPoints(
+        array: ArrayList<OverlayItem>,
+        mapController: IMapController
+    ) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            array.forEach {
+                delay(1_000)
+                mapController.animateTo(it.point, 15.2, 1000)
+            }
+            viewModel.created()
+        }
     }
 
     private fun requestPermissions() {
@@ -193,11 +230,6 @@ class MapsFragment : Fragment() {
         } == PackageManager.PERMISSION_GRANTED
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _viewBinding = null
-    }
-
     companion object {
         private val REQUIRED_PERMISSIONS = mutableListOf(
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -208,7 +240,5 @@ class MapsFragment : Fragment() {
                 add(Manifest.permission.ACCESS_COARSE_LOCATION)
             }
         }.toTypedArray()
-
     }
-
 }
