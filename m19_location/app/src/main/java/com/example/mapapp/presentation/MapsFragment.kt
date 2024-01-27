@@ -48,6 +48,7 @@ class MapsFragment : Fragment() {
     lateinit var viewModel: MapViewModel
     private lateinit var map: MapView
     private lateinit var fusedLocation: FusedLocationProviderClient
+    private lateinit var currentGeoPoint: GeoPoint
     private var _viewBinding: MapsFragmentBinding? = null
     private val binding get() = _viewBinding!!
     private val launcher =
@@ -72,6 +73,7 @@ class MapsFragment : Fragment() {
                 location?.latitude = 47.208418
                 location?.longitude = 39.757041
                 location?.let {
+                    currentGeoPoint = GeoPoint(location.latitude, location.longitude)
                     map.controller.animateTo(
                         GeoPoint(location.latitude, location.longitude),
                         15.5,
@@ -139,6 +141,10 @@ class MapsFragment : Fragment() {
         setSettingsMap(array)
         if (viewModel.isCreated) {
             showPoints(array, mapController)
+        }
+        binding.myPositionButton.setOnClickListener {
+        if (currentGeoPoint!=null)
+            mapController.animateTo(currentGeoPoint)
         }
     }
 
