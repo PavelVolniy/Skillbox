@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -48,7 +49,7 @@ class MapsFragment : Fragment() {
     lateinit var viewModel: MapViewModel
     private lateinit var map: MapView
     private lateinit var fusedLocation: FusedLocationProviderClient
-    private lateinit var currentGeoPoint: GeoPoint
+    private var currentGeoPoint: GeoPoint? = null
     private var _viewBinding: MapsFragmentBinding? = null
     private val binding get() = _viewBinding!!
     private val launcher =
@@ -68,21 +69,21 @@ class MapsFragment : Fragment() {
         }
 
     private val locationCallBack = object : LocationCallback() {
+        @RequiresApi(Build.VERSION_CODES.TIRAMISU)
         override fun onLocationResult(result: LocationResult) {
+
             result.lastLocation.let { location ->
-                location?.latitude = 47.208418
-                location?.longitude = 39.757041
-                location?.let {
-                    currentGeoPoint = GeoPoint(location.latitude, location.longitude)
-                    map.controller.animateTo(
-                        GeoPoint(location.latitude, location.longitude),
-                        15.5,
-                        1000
-                    )
-                    val myLocation = MyLocationNewOverlay(map)
-                    myLocation.disableFollowLocation()
-                    map.overlays.add(myLocation)
-                }
+//                location?.latitude = 47.208418
+//                location?.longitude = 39.757041
+                currentGeoPoint = GeoPoint(location!!.latitude, location.longitude)
+                map.controller.animateTo(
+                    GeoPoint(location.latitude, location.longitude),
+                    15.5,
+                    1000
+                )
+                val myLocation = MyLocationNewOverlay(map)
+                myLocation.disableFollowLocation()
+                map.overlays.add(myLocation)
             }
         }
     }
@@ -143,8 +144,15 @@ class MapsFragment : Fragment() {
             showPoints(array, mapController)
         }
         binding.myPositionButton.setOnClickListener {
-        if (currentGeoPoint!=null)
-            mapController.animateTo(currentGeoPoint)
+            if (currentGeoPoint != null) {
+                mapController.animateTo(currentGeoPoint)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "The app cannot get the location",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
